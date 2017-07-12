@@ -23,7 +23,7 @@ class MinioScriptProvider(val minioClient: MinioClient) : ScriptProvider {
             val scripts = minioClient.getObject("scripts", partner + ".js")
             return IOUtils.toString(scripts, Charset.forName("UTF-8"))
         } catch (e: ErrorResponseException) {
-            throw ScriptException("Can't get script")
+            throw ScriptException("Can't get script: " + e.message)
         }
     }
 }
