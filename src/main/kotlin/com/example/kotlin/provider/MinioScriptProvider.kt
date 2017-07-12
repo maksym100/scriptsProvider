@@ -20,10 +20,10 @@ class MinioScriptProvider(val minioClient: MinioClient) : ScriptProvider {
     @Cacheable("scripts")
     override fun getScriptContent(partner: String): String {
         try {
-            val scripts = minioClient.getObject("scripts", partner + ".js")
+            val scripts = minioClient.getObject("scripts", "$partner.js")
             return IOUtils.toString(scripts, Charset.forName("UTF-8"))
         } catch (e: ErrorResponseException) {
-            throw ScriptException("Can't get script: " + e.message)
+            throw ScriptException("Can't get script: $e.message")
         }
     }
 }

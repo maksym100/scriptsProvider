@@ -22,9 +22,9 @@ class FileScriptProvider(@Value(value = "#{'\${scripts.directory:classpath:scrip
     @Cacheable("scripts")
     override fun getScriptContent(partner: String): String {
         logger.debug("Getting script from file for {} partner", partner)
-        val uri = Paths.get(scriptsDir.uri).resolve(partner + ".js")
+        val uri = Paths.get(scriptsDir.uri).resolve("$partner.js")
         if (!uri.toFile().exists()) {
-            throw ScriptException("Script for partner " + partner + " don't exists")
+            throw ScriptException("Script for partner $partner don't exists")
         }
         return String(Files.readAllBytes(uri))
     }

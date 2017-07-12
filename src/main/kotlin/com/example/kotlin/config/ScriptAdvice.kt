@@ -19,7 +19,6 @@ class ScriptAdvice : ResponseEntityExceptionHandler() {
     @ExceptionHandler(value = *arrayOf(ScriptException::class))
     fun handleConflict(ex: ScriptException, request: WebRequest): ResponseEntity<Any> {
         val bodyOfResponse = ex.message
-        return handleExceptionInternal(ex, bodyOfResponse,
-                HttpHeaders(), HttpStatus.BAD_REQUEST, request)
+        return handleExceptionInternal(ex, bodyOfResponse, HttpHeaders(), HttpStatus.BAD_REQUEST, request)
     }
 }
