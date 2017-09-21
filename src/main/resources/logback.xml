@@ -9,11 +9,11 @@
         </layout>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 
-    <logger name="org.springframework" level="INFO">
+    <logger name="com.example.kotlin" level="DEBUG">
         <appender-ref ref="STDOUT"/>
     </logger>
 </configuration>
